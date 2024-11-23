@@ -1,1 +1,0 @@
-# movies-management-app
