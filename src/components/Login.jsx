@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios"; // Import Axios
 import { loginSuccess } from "../services/userSlice";
 import "./Login.css"; // Import the CSS for styling
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -28,22 +29,13 @@ const Login = () => {
     }),
     onSubmit: async (values) => {
       try {
-        // Make the POST request to your login API
         const response = await axios.post("http://localhost:8000/apis/user/login", values);
-
         const { user, token, message } = response.data;
-
-        // Show success message
         toast.success(message);
-
-        // Save user and token in local storage
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
-
-        // Dispatch user login to Redux store
         dispatch(loginSuccess(user));
       } catch (error) {
-        // Handle API errors
         if (error.response?.status === 401 || error.response?.status === 404) {
           toast.error("Incorrect username or password. Please try again.");
         } else {
@@ -96,7 +88,7 @@ const Login = () => {
         </button>
       </form>
       <div className="login-footer">
-        <p>Don't have an account? <a href="/register">Register</a></p>
+        <p>Don't have an account? <Link to="/register">Register</Link></p>
       </div>
     </div>
   );
