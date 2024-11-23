@@ -3,9 +3,9 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import axios from "axios"; // Import Axios
+import axios from "axios"; 
 import { loginSuccess } from "../services/userSlice";
-import "./Login.css"; // Import the CSS for styling
+import "./Login.css"; 
 import { Link } from "react-router-dom";
 
 const Login = () => {
