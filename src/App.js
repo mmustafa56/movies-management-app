@@ -1,9 +1,12 @@
 import { BrowserRouter ,Route,Routes, Outlet,Navigate} from 'react-router-dom';
-import './App.css';
 import Movies from './components/Movies';
 import Login from './components/Login';
 import Registration from './components/Registeration';
 import { useSelector } from 'react-redux';
+import Navbar from './components/Navbar';
+import './index.css';
+
+
 
 function App() {
 const isAuthenticated = useSelector(state => state.user.isAuthenticated) || false
@@ -24,9 +27,9 @@ const PrivateRoute =()=>{
 }
 
   return (
-    <div className="App">
+    <>
      <BrowserRouter>
-       
+          <Navbar/>
         <Routes>
          <Route path="/" element={<PublicRoute />}>
             <Route path="/" element={<Login />} />
@@ -40,7 +43,7 @@ const PrivateRoute =()=>{
         </Routes>
       </BrowserRouter>
       
-    </div>
+    </>
   );
 }
 

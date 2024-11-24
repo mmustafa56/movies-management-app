@@ -1,10 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import axios from "axios"; // Import Axios
-import { toast } from "react-toastify";
+import axios from "axios"; 
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../services/userSlice";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -49,100 +49,104 @@ const Registration = () => {
   });
 
   return (
-    <div className="registration-container">
-      <h1 className="registration-title">Registration</h1>
-      <form className="registration-form" onSubmit={formik.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Enter your full name"
-            className={`form-input ${formik.touched.name && formik.errors.name ? "error" : ""}`}
-          />
-          {formik.touched.name && formik.errors.name && (
-            <div className="error-message">{formik.errors.name}</div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Enter your email"
-            className={`form-input ${formik.touched.email && formik.errors.email ? "error" : ""}`}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <div className="error-message">{formik.errors.email}</div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Enter your password"
-            className={`form-input ${formik.touched.password && formik.errors.password ? "error" : ""}`}
-          />
-          {formik.touched.password && formik.errors.password && (
-            <div className="error-message">{formik.errors.password}</div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={formik.values.city}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Enter your city"
-            className={`form-input ${formik.touched.city && formik.errors.city ? "error" : ""}`}
-          />
-          {formik.touched.city && formik.errors.city && (
-            <div className="error-message">{formik.errors.city}</div>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formik.values.country}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder="Enter your country"
-            className={`form-input ${formik.touched.country && formik.errors.country ? "error" : ""}`}
-          />
-          {formik.touched.country && formik.errors.country && (
-            <div className="error-message">{formik.errors.country}</div>
-          )}
-        </div>
-
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-semibold text-center text-blue-600 mb-4">Registration</h1>
         
+        <form onSubmit={formik.handleSubmit} className="space-y-3">
+          <div>
+            <label htmlFor="name" className="block text-gray-700">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your full name"
+              className={`w-full px-4 py-2 border rounded-md mt-2 ${formik.touched.name && formik.errors.name ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <div className="text-sm text-red-500 mt-1">{formik.errors.name}</div>
+            )}
+          </div>
 
-        <button type="submit" className="submit-btn">
-          Register
-        </button>
-      </form>
+          <div>
+            <label htmlFor="email" className="block text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your email"
+              className={`w-full px-4 py-2 border rounded-md mt-2 ${formik.touched.email && formik.errors.email ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <div className="text-sm text-red-500 mt-1">{formik.errors.email}</div>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-gray-700">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your password"
+              className={`w-full px-4 py-2 border rounded-md mt-2 ${formik.touched.password && formik.errors.password ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <div className="text-sm text-red-500 mt-1">{formik.errors.password}</div>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="city" className="block text-gray-700">City</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={formik.values.city}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your city"
+              className={`w-full px-4 py-2 border rounded-md mt-2 ${formik.touched.city && formik.errors.city ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {formik.touched.city && formik.errors.city && (
+              <div className="text-sm text-red-500 mt-1">{formik.errors.city}</div>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="country" className="block text-gray-700">Country</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={formik.values.country}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your country"
+              className={`w-full px-4 py-2 border rounded-md mt-2 ${formik.touched.country && formik.errors.country ? 'border-red-500' : 'border-gray-300'}`}
+            />
+            {formik.touched.country && formik.errors.country && (
+              <div className="text-sm text-red-500 mt-1">{formik.errors.country}</div>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-2 mt-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none"
+          >
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

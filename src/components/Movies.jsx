@@ -8,6 +8,7 @@ const Movies = () => {
     try {
       const response = await axios.get("https://itunes.apple.com/search?term=star&country=au&media=movie");
       setMovies(response.data.results);
+      console.log(response)
     } catch (error) {
       console.error("Error fetching movies:", error);
     }

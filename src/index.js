@@ -8,6 +8,7 @@ import { store } from './store/store';
 import RestoreRedux from './store/RestoreRedux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
