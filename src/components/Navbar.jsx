@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="bg-black text-white opacity-75 sticky top-0 z-50">
     <div className="container mx-auto flex items-center justify-between px-4 py-3">
       <div className="text-lg font-bold">
-        <Link to="/" className="hover:text-gray-200"><img src={logoImg} alt="" className='w-14 h-14 rounded-full'/></Link>
+        <Link to="/" className="hover:text-gray-200"><img src={logoImg} alt="" className='w-20 h-20 rounded-full'/></Link>
       </div>
   
       <button
@@ -43,11 +43,11 @@ const Navbar = () => {
           />
         </svg>
       </button>
-      <div
-        className={`${
+  
+      <div className={`${
           isOpen ? "block" : "hidden"
-        } md:flex md:items-center w-full md:w-auto`}
-      >
+        } md:flex md:items-center w-full md:w-auto`}>
+          
         <ul className="flex flex-col md:flex-row md:space-x-6">
           <li>
             <Link
