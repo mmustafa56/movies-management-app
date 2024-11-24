@@ -8,7 +8,7 @@ const Movies = () => {
     try {
       const response = await axios.get("https://itunes.apple.com/search?term=star&country=au&media=movie");
       setMovies(response.data.results);
-      console.log(response)
+      console.log(response.data.results)
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -26,7 +26,6 @@ const Movies = () => {
           <li key={movie.trackId} style={{textDecoration:"none"}}>
             <img src={movie.artworkUrl100} alt={movie.trackName} />
             <p>
-
               <strong>{movie.trackName} {index+1}</strong> - {movie.primaryGenreName}
             </p>
             <p>Release Date: {new Date(movie.releaseDate).toLocaleDateString()}</p>
