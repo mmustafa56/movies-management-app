@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [viewMode, setViewMode] = useState("grid"); 
+  const [viewMode, setViewMode] = useState("grid");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
@@ -48,11 +48,10 @@ const Movies = () => {
       </div>
 
       <div
-        className={`${
-          viewMode === "grid"
+        className={`${viewMode === "grid"
             ? "grid grid-cols-2 md:grid-cols-4 gap-4"
             : "flex flex-col"
-        }`}
+          }`}
       >
         {currentMovies.map((movie) => (
           <div
@@ -75,9 +74,8 @@ const Movies = () => {
 
       <div className="flex justify-between items-center mt-6">
         <button
-          className={`px-4 py-2 ${
-            currentPage === 1 ? "bg-gray-300" : "bg-blue-600 text-white"
-          } rounded`}
+          className={`px-4 py-2 ${currentPage === 1 ? "bg-gray-300" : "bg-blue-600 text-white"
+            } rounded`}
           disabled={currentPage === 1}
           onClick={() => setCurrentPage((prev) => prev - 1)}
         >
@@ -87,11 +85,10 @@ const Movies = () => {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          className={`px-4 py-2 ${
-            currentPage === totalPages
+          className={`px-4 py-2 ${currentPage === totalPages
               ? "bg-gray-300"
               : "bg-blue-600 text-white"
-          } rounded`}
+            } rounded`}
           disabled={currentPage === totalPages}
           onClick={() => setCurrentPage((prev) => prev + 1)}
         >
