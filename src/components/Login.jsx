@@ -5,10 +5,11 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import axios from "axios"; 
 import { loginSuccess } from "../services/userSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -35,6 +36,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
         dispatch(loginSuccess(user));
+        navigate("/")
       } catch (error) {
         if (error.response?.status === 401 || error.response?.status === 404) {
           toast.error("Incorrect username or password. Please try again.");

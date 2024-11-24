@@ -52,7 +52,7 @@ const Navbar = () => {
           <ul className="flex flex-col md:flex-row md:space-x-6">
             <li>
               <Link
-                to="/"
+                to="/home"
                 className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
               >
                 Home
@@ -65,7 +65,17 @@ const Navbar = () => {
               >
                 Movies
               </Link>
+            </li> 
+           { 
+           isAuthenticated && <li>
+              <Link
+                to="/movies/favorite"
+                className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
+              >
+                Favorite Movies
+              </Link>
             </li>
+            }
             {
             !isAuthenticated ?
             <li>
