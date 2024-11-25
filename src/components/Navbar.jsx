@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link,useNavigate } from 'react-router-dom';
 import { logout } from '../services/userSlice';
@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import logoImg from '../images/logo.png'
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(state=> state.user?.isAuthenticated);
