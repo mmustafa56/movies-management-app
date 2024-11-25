@@ -72,7 +72,7 @@ const Movies = () => {
         </div>
       </div>
 
-      <div className={`${viewMode === "grid" ? "grid grid-cols-2 md:grid-cols-4 gap-4" : "flex flex-col"}`}>
+      <div className={`${viewMode === "grid" ? "grid grid-cols-2 md:grid-cols-4 gap-4" : "flex flex-col "}`}>
         {movies.map((movie, index) => (
           <Link to={`/movie/${movie.trackId}`} key={index} className="h-full my-5">
             <div className="border p-4 rounded shadow hover:shadow-lg transition h-[60vh] flex flex-col justify-between">
@@ -83,14 +83,14 @@ const Movies = () => {
               />
               <div className="flex justify-between align-middle">
                   <div>
-                      <h3 className="font-semibold">{movie.trackName}</h3>
+                      <h3 className="sm:font-normal font-semibold">{movie.trackName}</h3>
                       <p className="text-sm text-gray-600">{movie.primaryGenreName}</p>
                       <p className="text-sm font-semibold text-gray-800">
                         Price: ${movie.trackPrice || "N/A"}
                       </p>
                   </div>
                   <div className="">
-                    <button className="bg-slate-400 rounded-full px-1">
+                    <button className="bg-slate-400 rounded-full px-1 flex justify-center align-middle hover:shadow-2xl hover:bg-slate-700 hover:shadow-slate-500">
                        <i class="bi bi-heart-fill text-red-700"></i>
                     </button>
                   </div>

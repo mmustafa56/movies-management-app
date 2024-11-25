@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', initApp)
     <header class="sticky top-0 z-10 bg-teal-700 text-white">
     <section class="mx-auto flex max-w-6xl items-center justify-between p-4">
       <h1 class="text-3xl font-medium">
-        <Link to="/"> <img src={logoImg} alt="" className='w-20 h-20 rounded-full'/></Link>
+        <Link to="/"> <img src={logoImg} alt="" className='w-14 h-14 rounded-full'/></Link>
       </h1>
       <div>
         <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
@@ -63,10 +63,7 @@ document.addEventListener('DOMContentLoaded', initApp)
       </div>
     </section>
     <section id="mobile-menu"
-      class="top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl">
-      {/* <!-- <button class="text-8xl self-end px-6">
-                &times;
-            </button> --> */}
+     class="top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl">
       <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
         <Link to="/" class="w-full py-6 text-center hover:opacity-90">Home</Link>
         <Link to="/movies" class="w-full py-6 text-center hover:opacity-90">Movies</Link>
@@ -87,3 +84,154 @@ document.addEventListener('DOMContentLoaded', initApp)
 
 export default Navbar;
 
+
+
+// import React, { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { Link, useNavigate } from "react-router-dom";
+// import { logout } from "../services/userSlice";
+// import { toast } from "react-toastify";
+// import logoImg from "../images/logo.png";
+
+// const Navbar = () => {
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   const isAuthenticated = useSelector((state) => state.user?.isAuthenticated);
+
+//   const handleLogout = () => {
+//     dispatch(logout());
+//     toast.info("User logged out successfully!");
+//     navigate("/");
+//     setIsMobileMenuOpen(false); // Close menu on logout
+//   };
+
+//   const toggleMobileMenu = () => {
+//     setIsMobileMenuOpen(!isMobileMenuOpen);
+//   };
+
+//   return (
+//     <header className="sticky top-0 z-10 bg-teal-700 text-white">
+//       <section className="mx-auto flex max-w-6xl items-center justify-between p-4">
+//         <h1 className="text-3xl font-medium">
+//           <Link to="/">
+//             <img src={logoImg} alt="Logo" className="w-14 h-14 rounded-full" />
+//           </Link>
+//         </h1>
+//         <div>
+//           {/* Hamburger Button */}
+//           <button
+//             id="hamburger-button"
+//             className="relative flex flex-col h-8 w-8 justify-between items-center md:hidden"
+//             onClick={toggleMobileMenu}
+//           >
+//             <span
+//               className={`h-1 w-8 bg-white rounded transition-all duration-300 ${
+//                 isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+//               }`}
+//             ></span>
+//             <span
+//               className={`h-1 w-8 bg-white rounded transition-all duration-300 ${
+//                 isMobileMenuOpen ? "opacity-0" : "opacity-100"
+//               }`}
+//             ></span>
+//             <span
+//               className={`h-1 w-8 bg-white rounded transition-all duration-300 ${
+//                 isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+//               }`}
+//             ></span>
+//           </button>
+
+//           {/* Desktop Menu */}
+//           <nav
+//             className="hidden space-x-6 text-lg md:block"
+//             aria-label="main-navigation"
+//           >
+//             <Link to="/" className="hover:opacity-90">
+//               Home
+//             </Link>
+//             <Link to="/movies" className="hover:opacity-90">
+//               Movies
+//             </Link>
+//             {isAuthenticated && (
+//               <Link to="/movies/favorite" className="hover:opacity-90">
+//                 Favorite Movies
+//               </Link>
+//             )}
+//             {isAuthenticated ? (
+//               <Link
+//                 to="/"
+//                 onClick={handleLogout}
+//                 className="hover:opacity-90"
+//               >
+//                 Logout
+//               </Link>
+//             ) : (
+//               <Link to="/login" className="hover:opacity-90">
+//                 Login
+//               </Link>
+//             )}
+//           </nav>
+//         </div>
+//       </section>
+
+//       {/* Mobile Menu */}
+//       <section
+//         id="mobile-menu"
+//         className={`absolute top-16 w-full bg-black text-xl text-white transform ${
+//           isMobileMenuOpen
+//             ? "translate-y-0 opacity-100"
+//             : "-translate-y-full opacity-0"
+//         } transition-all duration-300 ease-in-out md:hidden`}
+//       >
+//         <nav
+//           className="flex flex-col items-center py-4"
+//           aria-label="mobile-navigation"
+//         >
+//           <Link
+//             to="/"
+//             className="w-full py-2 text-center hover:opacity-90"
+//             onClick={toggleMobileMenu}
+//           >
+//             Home
+//           </Link>
+//           <Link
+//             to="/movies"
+//             className="w-full py-2 text-center hover:opacity-90"
+//             onClick={toggleMobileMenu}
+//           >
+//             Movies
+//           </Link>
+//           {isAuthenticated && (
+//             <Link
+//               to="/movies/favorite"
+//               className="w-full py-2 text-center hover:opacity-90"
+//               onClick={toggleMobileMenu}
+//             >
+//               Favorite Movies
+//             </Link>
+//           )}
+//           {isAuthenticated ? (
+//             <Link
+//               to="/"
+//               className="w-full py-2 text-center hover:opacity-90"
+//               onClick={handleLogout}
+//             >
+//               Logout
+//             </Link>
+//           ) : (
+//             <Link
+//               to="/login"
+//               className="w-full py-2 text-center hover:opacity-90"
+//               onClick={toggleMobileMenu}
+//             >
+//               Login
+//             </Link>
+//           )}
+//         </nav>
+//       </section>
+//     </header>
+//   );
+// };
+
+// export default Navbar;
