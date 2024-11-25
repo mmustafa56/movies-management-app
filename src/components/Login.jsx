@@ -33,10 +33,11 @@ const Login = () => {
         
         const { user, token, message } = response.data;
         toast.success(message);
+        console.log("jasdhfaskjdhfskjdhfsjdxfcs")
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
         dispatch(loginSuccess(user));
-        navigate("/")
+        navigate("/home")
       } catch (error) {
         if (error.response?.status === 401 || error.response?.status === 404) {
           toast.error("Incorrect username or password. Please try again.");
@@ -50,7 +51,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-sm bg-white p-8  rounded-lg shadow-lg">
-        <h1 className="text-3xl font-semibold text-center text-blue-600 mb-6">Login</h1>
+        <h1 className="text-3xl font-semibold text-center text-green-900 mb-6">Login</h1>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-gray-700">Email</label>
@@ -88,7 +89,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full py-2 mt-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none"
+            className="w-full py-2 mt-4 bg-green-800 text-white rounded-md hover:bg-green-700 focus:outline-none"
           >
             Login
           </button>
@@ -96,7 +97,7 @@ const Login = () => {
 
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account? <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
+            Don't have an account? <Link to="/register" className="text-green-600 hover:underline">Register</Link>
           </p>
         </div>
       </div>

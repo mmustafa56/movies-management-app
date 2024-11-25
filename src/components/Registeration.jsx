@@ -51,7 +51,7 @@ const Registration = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-semibold text-center text-blue-600 mb-4">Registration</h1>
+        <h1 className="text-3xl font-semibold text-center text-green-800 mb-4">Registration</h1>
         
         <form onSubmit={formik.handleSubmit} className="space-y-3">
           <div>
@@ -141,7 +141,7 @@ const Registration = () => {
 
           <button
             type="submit"
-            className="w-full py-2 mt-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none"
+            className="w-full py-2 mt-4 bg-green-800 text-white rounded-md hover:bg-green-700 focus:outline-none"
           >
             Register
           </button>

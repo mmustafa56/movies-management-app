@@ -14,93 +14,76 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout());  
     toast.info("User Logout  successfully!");        
-    navigate("/login");           
+    navigate("/");           
   };
 
+
+
+  const initApp = () => {
+    const hamburgerBtn = document.getElementById('hamburger-button')
+    const mobileMenu = document.getElementById('mobile-menu')
+
+    const toggleMenu = () => {
+        mobileMenu.classList.toggle('hidden')
+        mobileMenu.classList.toggle('flex')
+        hamburgerBtn.classList.toggle('toggle-btn')
+    }
+
+    hamburgerBtn.addEventListener('click', toggleMenu)
+    mobileMenu.addEventListener('click', toggleMenu)
+}
+
+document.addEventListener('DOMContentLoaded', initApp)
+
+
   return (
-    <nav className="bg-black text-white opacity-75 sticky top-0 z-50">
-    <div className="container mx-auto flex items-center justify-between px-4 py-3">
-      <div className="text-lg font-bold">
-        <Link to="/" className="hover:text-gray-200"><img src={logoImg} alt="" className='w-20 h-20 rounded-full'/></Link>
+    <header class="sticky top-0 z-10 bg-teal-700 text-white">
+    <section class="mx-auto flex max-w-6xl items-center justify-between p-4">
+      <h1 class="text-3xl font-medium">
+        <Link to="/"> <img src={logoImg} alt="" className='w-20 h-20 rounded-full'/></Link>
+      </h1>
+      <div>
+        <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden">
+          <div  class="absolute top-4 -mt-0.5 h-1 w-8 rounded bg-white transition-all duration-500 before:absolute before:h-1 before:w-8 before:-translate-x-4 before:-translate-y-3 before:rounded before:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-1 after:w-8 after:-translate-x-4 after:translate-y-3 after:rounded after:bg-white after:transition-all after:duration-500 after:content-['']">
+          </div>
+        </button>
+        <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+          <Link to="/" class="hover:opacity-90">Home</Link>
+          <Link to="/movies" class="hover:opacity-90">Movies</Link>
+          {
+            isAuthenticated &&   <Link to="/movies/favorite" class="hover:opacity-90">Favorite Movies</Link>
+          }
+          {isAuthenticated 
+          ? 
+          <Link to="/" onClick={handleLogout} class="hover:opacity-90">Logout</Link>
+          :
+          <Link to="/login" class="hover:opacity-90">Login</Link>
+          }
+        </nav>
       </div>
-  
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="block md:hidden focus:outline-none"
-      >
-        <svg
-          className="h-6 w-6"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-          />
-        </svg>
-      </button>
-  
-      <div className={`${
-          isOpen ? "block" : "hidden"
-        } md:flex md:items-center w-full md:w-auto`}>
-          
-        <ul className="flex flex-col md:flex-row md:space-x-6">
-          <li>
-            <Link
-              to="/home"
-              className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/movies"
-              className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
-            >
-              Movies
-            </Link>
-          </li>
-          {isAuthenticated && (
-            <li>
-              <Link
-                to="/movies/favorite"
-                className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
-              >
-                Favorite Movies
-              </Link>
-            </li>
-          )}
-          {!isAuthenticated ? (
-            <li>
-              <Link
-                to="/login"
-                className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
-              >
-                Login
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link
-                to="/login"
-                onClick={handleLogout}
-                className="block py-2 px-4 hover:bg-blue-700 rounded md:inline md:hover:bg-transparent"
-              >
-                Logout
-              </Link>
-            </li>
-          )}
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
+    </section>
+    <section id="mobile-menu"
+      class="top-68 justify-center absolute hidden w-full origin-top animate-open-menu flex-col bg-black text-5xl">
+      {/* <!-- <button class="text-8xl self-end px-6">
+                &times;
+            </button> --> */}
+      <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
+        <Link to="/" class="w-full py-6 text-center hover:opacity-90">Home</Link>
+        <Link to="/movies" class="w-full py-6 text-center hover:opacity-90">Movies</Link>
+        {
+          isAuthenticated && <Link to="/movies/favorite" class="w-full py-6 text-center hover:opacity-90">Favorite Moives</Link>
+        }
+       {
+        isAuthenticated ?   <Link to="/logout" onClick={handleLogout} class="w-full py-6 text-center hover:opacity-90">Logout</Link>
+        :  <Link to="/login" class="w-full py-6 text-center hover:opacity-90">Login</Link>
+       }
+     
+      </nav>
+    </section>
+  </header>
+   
   );
 };
 
 export default Navbar;
+
