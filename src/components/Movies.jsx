@@ -54,7 +54,7 @@ const Movies = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/apis/movies/add-to-favorite', 
-        { movie },
+        movie ,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
