@@ -19,3 +19,20 @@
         @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent [&>div]:rotate-[720deg]
     }
 }
+
+
+
+
+/* Hamburger Button Animation */
+#hamburger-button.toggle-btn div {
+    transform: rotate(45deg); /* Rotate the middle bar */
+  }
+  
+  #hamburger-button.toggle-btn div:before {
+    transform: rotate(-90deg); /* Rotate the top bar */
+  }
+  
+  #hamburger-button.toggle-btn div:after {
+    transform: rotate(90deg); /* Rotate the bottom bar */
+  }
+  
