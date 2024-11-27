@@ -5,9 +5,11 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../services/userSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -41,6 +43,7 @@ const Registration = () => {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
         dispatch(loginSuccess(user));
+        navigate("/")
       } catch (error) {
         const errorMessage = error.response?.data?.message || "Registration failed. Please try again later.";
         toast.error(errorMessage);
